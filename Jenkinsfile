@@ -12,10 +12,20 @@ pipeline {
         }
 
         stage('Drop the containers') {
-            steps {
-                echo 'droping the container...'
-                pwsh 'docker rm -f app-web-apache'
-                pwsh 'docker rm -f app-web-nginx'
+            parallel {
+                stage('Drop Apache') {
+                    steps {
+                        echo 'droping apache...'
+                        pwsh 'docker rm -f app-web-apache'
+                    }
+                }
+
+                stage('Drop nginx') {
+                    steps {
+                        echo 'droping nginx...'
+                        pwsh 'docker rm -f app-web-nginx'
+                    }
+                }
             }
         }
         //Creating the containers in Parallel
