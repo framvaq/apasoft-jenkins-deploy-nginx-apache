@@ -25,6 +25,7 @@ pipeline {
                     steps {
                         echo 'droping nginx...'
                         pwsh 'docker rm -f app-web-nginx'
+                        pwsh 'docker rm -f app-web-apache'
                     }
                 }
             }
