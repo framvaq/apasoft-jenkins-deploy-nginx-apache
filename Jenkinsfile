@@ -17,7 +17,7 @@ pipeline {
                 stage('Drop Apache') {
                     steps {
                         echo 'droping apache...'
-                        pwsh 'dock rm -f app-web-apache'
+                        pwsh 'docker -f app-web-apache'
                     }
                 }
 
