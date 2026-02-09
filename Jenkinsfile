@@ -12,6 +12,7 @@ pipeline {
         }
 
         stage('Drop the containers') {
+            failFast true
             parallel {
                 stage('Drop Apache') {
                     steps {
